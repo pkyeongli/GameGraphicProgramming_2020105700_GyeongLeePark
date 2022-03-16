@@ -1,7 +1,7 @@
 ﻿/*+===================================================================
   File:      MAIN.CPP
 
-  Summary:   This application serves as a test code for the project
+  Summary:   This application demonstrates creating a Direct3D 11 device
 
   Origin:    http://msdn.microsoft.com/en-us/library/windows/apps/ff729718.aspx
 
@@ -36,7 +36,24 @@
 -----------------------------------------------------------------F-F*/
 INT WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ INT nCmdShow)
 {
-    library::PrintHi();
+    /*--------------------------------------------------------------------
+      TODO: Unreferenced parameters (remove the comment)
+    --------------------------------------------------------------------*/
 
-    return 0;
+    /*--------------------------------------------------------------------
+      TODO: Initialization (remove the comment)
+    --------------------------------------------------------------------*/
+
+    // Main message loop
+    MSG msg = { 0 };
+
+    /*--------------------------------------------------------------------
+      TODO: Main message loop (remove the comment)
+    --------------------------------------------------------------------*/
+
+    /*--------------------------------------------------------------------
+      TODO: Destroy (remove the comment)
+    --------------------------------------------------------------------*/
+
+    return static_cast<INT>(msg.wParam);
 }
