@@ -2,6 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by Resource.rc
 //
+#pragma once
 
 #define IDS_APP_TITLE           103
 
