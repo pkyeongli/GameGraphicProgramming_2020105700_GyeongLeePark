@@ -9,7 +9,7 @@
   © 2022 Kyung Hee University
 ===================================================================+*/
 
-//#include "Common.h"
+#include "Common.h"
 #include <string>
 #include <memory>
 #include "Game/Game.h"

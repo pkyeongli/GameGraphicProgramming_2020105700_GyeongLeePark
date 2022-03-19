@@ -1,4 +1,4 @@
-﻿#include "Game/Game.h"
+﻿#include "Game.h"
 
 namespace library
 {
@@ -20,7 +20,6 @@ namespace library
     /*--------------------------------------------------------------------
       Forward declarations
     --------------------------------------------------------------------*/
-
     /*F+F+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       Function: WindowProc
 
@@ -42,7 +41,7 @@ namespace library
     LRESULT CALLBACK WndProc(_In_ HWND hWnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In_ LPARAM lParam) {
         PAINTSTRUCT ps;
         HDC hdc;
-       
+
         switch (uMsg)
         {
         case WM_PAINT:

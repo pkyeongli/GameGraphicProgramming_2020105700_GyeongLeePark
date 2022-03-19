@@ -22,12 +22,14 @@ namespace library
     extern D3D_DRIVER_TYPE         g_driverType;
     extern D3D_FEATURE_LEVEL       g_featureLevel;
     extern ID3D11Device* g_pd3dDevice;
-    extern ID3D11Device1* g_pd3dDevice1 ;
+    extern ID3D11Device1* g_pd3dDevice1;
     extern ID3D11DeviceContext* g_pImmediateContext;
     extern ID3D11DeviceContext1* g_pImmediateContext1;
     extern IDXGISwapChain* g_pSwapChain;
-    extern IDXGISwapChain1* g_pSwapChain1 ;
-    extern ID3D11RenderTargetView* g_pRenderTargetView ;
+    extern IDXGISwapChain1* g_pSwapChain1;
+    extern ID3D11RenderTargetView* g_pRenderTargetView;
+
+    LRESULT CALLBACK WndProc(_In_ HWND hWnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In_ LPARAM lParam);
 
     /*F+F+++F+++F+++F+++F+++F+++F+++F+++F+++F+++F+++F+++F+++F+++F+++F+++F
       Function: InitWindow
@@ -43,9 +45,9 @@ namespace library
         Returns:  HRESULT
                     Status code
     F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F-F*/
-    
 
-    HRESULT InitWindow(_In_ HINSTANCE hInstance, _In_ INT nCmdShow) {
+
+    inline HRESULT InitWindow(_In_ HINSTANCE hInstance, _In_ INT nCmdShow) {
         // Register class
         WNDCLASSEX wcex;
         wcex.cbSize = sizeof(WNDCLASSEX);
@@ -87,7 +89,7 @@ namespace library
       Returns:  HRESULT
                   Status code
     F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F-F*/
-    HRESULT InitDevice() {
+    inline HRESULT InitDevice() {
         HRESULT hr = S_OK;
 
         RECT rc;
@@ -243,7 +245,7 @@ namespace library
 
       Summary:  Clean up the objects we've created
     F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F-F*/
-    void CleanupDevice() {
+    inline void CleanupDevice() {
         if (g_pImmediateContext) g_pImmediateContext->ClearState();
 
         if (g_pRenderTargetView) g_pRenderTargetView->Release();
@@ -260,7 +262,7 @@ namespace library
 
       Summary:  Render the frame
     F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F-F*/
-    void Render() {
+    inline void Render() {
         // Just clear the backbuffer
         g_pImmediateContext->ClearRenderTargetView(g_pRenderTargetView, Colors::MidnightBlue);
         g_pSwapChain->Present(0, 0);
