@@ -10,9 +10,10 @@
 ===================================================================+*/
 
 #include "Common.h"
-#include <string>
-#include <memory>
+
 #include "Game/Game.h"
+
+
 
 /*F+F+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   Function: wWinMain
@@ -35,15 +36,15 @@
   Returns:  INT
               Status code.
 -----------------------------------------------------------------F-F*/
-
 INT WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ INT nCmdShow)
 {
-
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     if (FAILED(library::InitWindow(hInstance, nCmdShow)))
+    {
         return 0;
+    }
 
     if (FAILED(library::InitDevice()))
     {
@@ -51,9 +52,7 @@ INT WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
         return 0;
     }
 
-    // Main message loop
     MSG msg = { 0 };
-
     while (WM_QUIT != msg.message)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -71,3 +70,4 @@ INT WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
     return static_cast<INT>(msg.wParam);
 }
+
