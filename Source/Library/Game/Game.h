@@ -57,5 +57,16 @@ namespace library
 
       Summary:  Render the frame
     F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F---F-F*/
-    void Render();
-}
+    void Render()
+    {
+        // Clear the back buffer 
+        g_pImmediateContext->ClearRenderTargetView(g_pRenderTargetView, Colors::MidnightBlue);
+
+        // Render a triangle
+        g_pImmediateContext->VSSetShader(g_pVertexShader, nullptr, 0);
+        g_pImmediateContext->PSSetShader(g_pPixelShader, nullptr, 0);
+        g_pImmediateContext->Draw(3, 0);
+
+        // Present the information rendered to the back buffer to the front buffer (the screen)
+        g_pSwapChain->Present(0, 0);
+    }
