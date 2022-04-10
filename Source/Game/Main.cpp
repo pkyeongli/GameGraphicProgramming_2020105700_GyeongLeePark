@@ -1,9 +1,11 @@
-﻿/*+===================================================================
+﻿
+/*+===================================================================
   File:      MAIN.CPP
 
-  Summary:   This application demonstrates creating a Direct3D 11 device
+  Summary:   This application displays a triangle using Direct3D 11
 
-  Origin:    http://msdn.microsoft.com/en-us/library/windows/apps/ff729718.aspx
+  Origin:    https://docs.microsoft.com/en-us/previous-versions//ff729719(v=vs.85)
+             https://docs.microsoft.com/en-us/previous-versions//ff729720(v=vs.85)
 
   Originally created by Microsoft Corporation under MIT License
   © 2022 Kyung Hee University
@@ -11,9 +13,9 @@
 
 #include "Common.h"
 
+#include <memory>
+
 #include "Game/Game.h"
-
-
 
 /*F+F+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   Function: wWinMain
@@ -38,37 +40,19 @@
 -----------------------------------------------------------------F-F*/
 INT WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ INT nCmdShow)
 {
+#ifdef _DEBUG
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
+
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    if (FAILED(library::InitWindow(hInstance, nCmdShow)))
+    std::unique_ptr<library::Game> game = std::make_unique<library::Game>(L"Game Graphics Programming Lab 03: Rendering a Triangle");
+
+    if (FAILED(game->Initialize(hInstance, nCmdShow)))
     {
         return 0;
     }
 
-    if (FAILED(library::InitDevice()))
-    {
-        library::CleanupDevice();
-        return 0;
-    }
-
-    MSG msg = { 0 };
-    while (WM_QUIT != msg.message)
-    {
-        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-        else
-        {
-            library::Render();
-        }
-    }
-
-    library::CleanupDevice();
-
-    return static_cast<INT>(msg.wParam);
+    return game->Run();
 }
-
-    
