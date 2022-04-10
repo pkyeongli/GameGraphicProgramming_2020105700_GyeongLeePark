@@ -27,7 +27,7 @@
 
 #include <memory>
 
-#include "Resource.h";
+#include "Resource.h"
 
 constexpr LPCWSTR PSZ_COURSE_TITLE = L"Game Graphics Programming";
 
